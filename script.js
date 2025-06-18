@@ -39,10 +39,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- Task Management Code ---
     // Select DOM elements
-    const addButton = document.getElementById('add-task-btn'); // Select Add Task button
-    const taskInput = document.getElementById('task-input'); // Select task input field
-    const taskList = document.getElementById('task-list'); // Select task list
-    const clearButton = document.getElementById('clear-tasks-btn'); // Select Clear All Tasks button
+    const addButton = document.getElementById('add-task-btn');
+    const taskInput = document.getElementById('task-input');
+    const taskList = document.getElementById('task-list');
+    const clearButton = document.getElementById('clear-tasks-btn');
 
     // Define addTask function
     function addTask() {
@@ -52,18 +52,23 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
+        // Create new list item
         const li = document.createElement('li');
         li.textContent = taskText;
 
+        // Create remove button
         const removeButton = document.createElement('button');
         removeButton.textContent = 'Remove';
-        removeButton.className = 'remove-btn';
+        removeButton.classList.add('remove-btn'); // Use classList.add instead of className
         removeButton.onclick = () => {
             taskList.removeChild(li);
         };
 
+        // Append remove button to li, then li to taskList
         li.appendChild(removeButton);
         taskList.appendChild(li);
+
+        // Clear the input field
         taskInput.value = '';
     }
 
